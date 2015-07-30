@@ -1,0 +1,25 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "conio.h"
+
+using namespace std;
+
+int main ()
+{
+    long i,tam;
+    string x, y =" ";
+    
+    cout << "Ingrese una cadena: ";
+    getline(cin,x);
+    tam=x.length();
+    for(i=0;i<tam/2;i++)
+        y=y+x.at(tam-i-1);
+    
+    if(y==x)
+        cout << "la palabra es palindromo"<< endl;
+    else
+        cout << "la palabra no es palindromo"<< endl;
+    getch();
+    return 0;
+}
