@@ -1,0 +1,89 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define N 100
+
+using namespace std;
+void ValidarFecha();
+bool VerifSoloNumeros(char cad[]);
+int main()
+{
+	ValidarFecha();
+	getch();
+}
+
+void ValidarFecha()
+{  
+	int d,m,y;
+	char dc[N],mc[N],yc[N];
+	bool bisiesto = false;  
+	do
+	{
+		cout << "Introduce el dia: ";  
+		cin >> dc;
+	}while(VerifSoloNumeros(dc)==false);
+	do
+	{
+		cout << "Introduce el mes: ";  
+		cin >> mc; 
+	}while(VerifSoloNumeros(mc)==false);
+	do
+	{
+		cout << "Introduce el año: ";  
+		cin >> yc;
+	}while(VerifSoloNumeros(yc)==false);
+	d=atoi(dc);
+	m=atoi(mc);
+	y=atoi(yc);
+	//comprobamos si el año es bisiesto  
+	if(y%4==0 && y%100!=100 || y%400==0)  
+		bisiesto = true;  
+
+	//comprobamos que los datos ingresados esten en un rango valido  
+	if(d>0 && d<32 && m>0 && m<13 && y>0){  
+		if(m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12)  
+		{  
+			cout << "\nFecha valida";  
+		}  
+		else  
+		{  
+			if(m==2 && d<30 && bisiesto)  
+				cout << "\nFecha valida";  
+			else if(m==2 && d<29 && !bisiesto)  
+				cout << "\nFecha valida";  
+			else if(m!=2 && d<31)  
+				cout << "\nFecha valida";  
+			else  
+				cout << "\nFecha no valida";  
+		}  
+	}  
+	else  
+		cout << "\nFecha no valida";  
+} 
+
+
+
+bool VerifSoloNumeros(char cad[])
+{
+	int i;
+	bool k;
+	k=true;
+	i=0; 
+	while(i<strlen(cad)&&k==true)
+	{
+		if(cad[i]>='0'&& cad[i]<='9')
+		{
+			i++;
+		}
+		else
+		{
+			k=false;
+		}
+	}
+	if(strlen(cad)==0)
+	{
+		k=false;
+	}
+	return(k);
+
+}
