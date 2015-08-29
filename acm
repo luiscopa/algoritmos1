@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+
+bool primo (int n)
+{
+    bool k=true;
+    int i,d;
+    for (i=2;i<n;i++)
+        {
+            if(n%i!=0)
+            {
+                k=false;
+            }
+        }
+        return(k);
+}
+bool verificar(int n)
+{
+    bool j=true;
+    int d;
+    while(n>0)
+    {
+        d=n%10;
+        if(d==3 or d==4 or d==7)
+        {
+            j=false;
+        }
+        n=n/10;
+    }
+    return(j);
+}
+//int invertir(int n)
+
+int numero(int n)
+{
+    int k=0,d;
+    while(n>0)
+    {
+        d=n%10;
+        /*if(d==9)
+        {
+            d=6;
+        }
+        else{
+            if(d==6)
+            {
+                d=9;
+            }
+        }*/
+        k=(k*10)+d;
+        n=n/10;
+    }
+    return (k);
+}
+int main()
+{
+    int n,m;
+    bool k=false,l;
+    cin>>n;
+    l=verificar(n);
+    if (l==true)
+       {
+           m=numero(n);
+           if(primo(m)==true)
+           {
+               cout<<"yes";
+            }
+            else{
+                cout<<"no";
+            }
+       }
+    else
+    {
+            cout<<"no";
+    }
+
+}
